@@ -22,7 +22,7 @@ jobs:
         run: |
           docker run -d -p 8000:8000 --name api-test fakerestapi:local
           sleep 5
-          curl -f http://localhost:8000 || (echo "❌ Application failed to run in Docker!" && exit 1)
+          curl -f http://localhost:8000//api/v1/Books || (echo "❌ Application failed to run in Docker!" && exit 1)
 
       - name: Cleanup container
         run: |
