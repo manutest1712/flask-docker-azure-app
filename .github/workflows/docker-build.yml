@@ -50,8 +50,8 @@ jobs:
           push: true
           context: .
           tags: |
-            ${{ env.ACR_NAME }}.azurecr.io/${{ env.IMAGE_NAME }}:latest
-            ${{ env.ACR_NAME }}.azurecr.io/${{ env.IMAGE_NAME }}:${{ github.sha }}
+            ${{ env.ACR_LOGIN_SERVER }}.azurecr.io/${{ env.IMAGE_NAME }}:latest
+            ${{ env.ACR_LOGIN_SERVER }}.azurecr.io/${{ env.IMAGE_NAME }}:${{ github.sha }}
 
       - name: Verify pushed images
         run: |
