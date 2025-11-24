@@ -14,7 +14,7 @@ env:
   # The login server name for your Azure Container Registry (e.g., myregistry.azurecr.io)
   ACR_LOGIN_SERVER: ${{ secrets.ACR_LOGIN_SERVER }}
   # The name of the image repository inside ACR (e.g., 'myapp/api')
-  IMAGE_REPO_NAME: myapp/backend
+  IMAGE_NAME: flaskapp
   # Automatically generate a tag using the short SHA of the commit
   IMAGE_TAG: ${{ github.sha }}
 
@@ -43,19 +43,20 @@ jobs:
           sleep 5
           curl -f http://localhost:8000//api/v1/Books || (echo "❌ Application failed to run in Docker!" && exit 1)
 
-      # 3. Docker Login to Azure Container Registry (ACR)
-      # Note: Unlike older methods, using azure/login@v2 above automatically logs Docker into ACR 
-      # if the Service Principal has the correct permissions (AcrPush). However, explicitly logging 
-      # in using the registry server is often cleaner for `build-push-action`.
-      - name: Docker Login to ACR
-        uses: docker/login-action@v3
+      # Build and Push Image to ACR
+      - name: Build and Push to ACR
+        uses: docker/build-push-action@v6
         with:
-          # Use the full login server URL (e.g., myregistry.azurecr.io)
-          registry: ${{ env.ACR_LOGIN_SERVER }}
-          # The username for the registry (can often be the Service Principal ID, but using 
-          # a dedicated ACR username/password secret is also common and shown here for clarity).
-          username: ${{ secrets.ACR_USERNAME }}
-          password: ${{ secrets.ACR_PASSWORD }}
+          push: true
+          context: .
+          tags: |
+            ${{ env.ACR_NAME }}.azurecr.io/${{ env.IMAGE_NAME }}:latest
+            ${{ env.ACR_NAME }}.azurecr.io/${{ env.IMAGE_NAME }}:${{ github.sha }}
+
+      - name: Verify pushed images
+        run: |
+          az acr repository list --name ${{ env.ACR_NAME }} --output table
+          
       - name: Cleanup container
         run: |
           docker stop api-test
