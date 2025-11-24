@@ -43,6 +43,14 @@ jobs:
           sleep 5
           curl -f http://localhost:8000//api/v1/Books || (echo "❌ Application failed to run in Docker!" && exit 1)
 
+    # Step 3: Login to ACR
+      - name: Docker Login to ACR
+        uses: azure/docker-login@v1
+        with:
+          login-server: ${{ secrets.ACR_LOGIN_SERVER }}
+          username: ${{ secrets.ACR_ADMIN_USERNAME }}
+          password: ${{ secrets.ACR_ADMIN_PASSWORD }}
+
       # Build and Push Image to ACR
       - name: Build and Push to ACR
         uses: docker/build-push-action@v6
