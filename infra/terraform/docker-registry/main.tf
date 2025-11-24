@@ -1,24 +1,24 @@
 terraform {
-  required_version = ">=1.3.0"
-
   required_providers {
     azurerm = {
       source  = "hashicorp/azurerm"
-      version = "~>3.80"
     }
   }
 }
 
 provider "azurerm" {
   features {}
+  subscription_id = var.subscription_id
+  client_id       = var.client_id
+  client_secret   = var.client_secret
+  tenant_id       = var.tenant_id
 }
 
 # -------------------------
 # Resource Group
 # -------------------------
-resource "azurerm_resource_group" "rg" {
-  name     = "rg-flask-api"
-  location = "eastus"
+data "azurerm_resource_group" "main" {
+  name     = "Azuredevops"
 }
 
 # -------------------------
@@ -26,8 +26,8 @@ resource "azurerm_resource_group" "rg" {
 # -------------------------
 resource "azurerm_container_registry" "acr" {
   name                = "flaskapiregistry2025"   # MUST be globally unique
-  resource_group_name = azurerm_resource_group.rg.name
-  location            = azurerm_resource_group.rg.location
+  resource_group_name = data.azurerm_resource_group.main.name
+  location            = var.resource_location
   sku                 = "Basic"
 
   admin_enabled       = true   # enables username/password login (useful for GitHub actions)
