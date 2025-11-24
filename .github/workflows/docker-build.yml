@@ -31,9 +31,10 @@ jobs:
       - name: Azure Login
         uses: azure/login@v2
         with:
-          client-id: ${{ secrets.AZURE_CLIENT_ID }}
-          tenant-id: ${{ secrets.AZURE_TENANT_ID }}
-          subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+          client-id: ${{ secrets.GITHUB_DEPLOYMENT_SP_CLIENT_ID }}
+          tenant-id: ${{ secrets.GITHUB_DEPLOYMENT_SP_TENANT_ID }}
+          subscription-id: ${{ secrets.GITHUB_DEPLOYMENT_SP_SUBSCRIPTION_ID }}
+          client-secret: ${{ secrets.GITHUB_DEPLOYMENT_SP_CLIENT_SECRET }}
       - name: Cleanup container
         run: |
           docker stop api-test
