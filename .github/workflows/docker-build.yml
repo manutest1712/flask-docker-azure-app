@@ -6,6 +6,10 @@ on:
       - main
   workflow_dispatch:  # allows manual trigger
 
+permissions:
+  id-token: write
+  contents: read
+
 jobs:
   docker-local-build:
     runs-on: ubuntu-latest
