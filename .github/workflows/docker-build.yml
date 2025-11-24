@@ -1,0 +1,30 @@
+name: Local Docker Build Validation
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:  # allows manual trigger
+
+jobs:
+  docker-local-build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Build Docker image locally
+        run: |
+          docker build -t fakerestapi:local .
+      
+      - name: Run container for smoke test
+        run: |
+          docker run -d -p 8000:8000 --name api-test fakerestapi:local
+          sleep 5
+          curl -f http://localhost:8000 || (echo "❌ Application failed to run in Docker!" && exit 1)
+
+      - name: Cleanup container
+        run: |
+          docker stop api-test
+          docker rm api-test
