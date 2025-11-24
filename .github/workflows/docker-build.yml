@@ -63,7 +63,7 @@ jobs:
 
       - name: Verify pushed images
         run: |
-          az acr repository list --name ${{ env.ACR_NAME }} --output table
+          az acr repository list --name ${{ env.ACR_LOGIN_SERVER }} --output table
           
       - name: Cleanup container
         run: |
