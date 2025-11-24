@@ -31,7 +31,7 @@ jobs:
       - name: Azure Login
         uses: azure/login@v2
         with:
-          client-id: ${{ secrets.GITHUB_DEPLOYMENT_SP_CLIENT_ID }}
+          client-id: ${{ secrets.DEPLOYMENT_SP_CLIENT_ID }}
           tenant-id: ${{ secrets.AZURE_TENANT_ID }}
           subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
           #client-secret: ${{ secrets.GITHUB_DEPLOYMENT_SP_CLIENT_SECRET }}
