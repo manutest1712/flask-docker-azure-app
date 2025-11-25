@@ -40,7 +40,7 @@ Required **GitHub Secrets**:
 ```bash
 git clone <repository-url>
 cd <repository-folder>
-```bash
+```
 
 2. Navigate to the Terraform folder for Docker registry
 ```bash
