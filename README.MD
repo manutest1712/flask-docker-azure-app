@@ -71,6 +71,8 @@ terraform output acr_admin_username
 terraform output acr_admin_password
 ```
 
+---
+
 ### 2️⃣ Build and Publish Docker Image using GitHub Actions
 
 1. Set Secret values for GitHub Actions:
@@ -101,6 +103,7 @@ terraform output acr_admin_password
 3. Execute the work flow
 Push a commit to the branch configured in the workflow (e.g., main) or trigger it manually from the GitHub Actions tab.
 
+---
 
 
 - name: Azure Login
