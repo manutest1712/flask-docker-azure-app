@@ -88,13 +88,8 @@ terraform output acr_admin_password
 ```
 
 - ACR_LOGIN_SERVER
-  "<your-acr-name>.azurecr.io"
-
 - ACR_ADMIN_USERNAME
-  "<your-acr-admin-username>"
-
 - ACR_ADMIN_PASSWORD
-  "<your-acr-admin-password>"
 
 2. GitHub Actions workflow location:
 ```bash
