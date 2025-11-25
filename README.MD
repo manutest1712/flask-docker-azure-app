@@ -75,7 +75,7 @@ terraform output acr_admin_password
 
 1. Set Secret values for
 ```hcl
--AZURE_CREDENTIALS
+- AZURE_CREDENTIALS
 {
   "clientId": "<YOUR-SERVICE-PRINCIPAL-CLIENT-ID>",
   "clientSecret": "<YOUR-SERVICE-PRINCIPAL-CLIENT-SECRET>",
@@ -83,9 +83,9 @@ terraform output acr_admin_password
   "tenantId": "<YOUR-AZURE-TENANT-ID>"
 }
 ```
--ACR_LOGIN_SERVER
--ACR_ADMIN_USERNAME
--ACR_ADMIN_PASSWORD
+- ACR_LOGIN_SERVER
+- ACR_ADMIN_USERNAME
+- ACR_ADMIN_PASSWORD
 2. GitHub Actions workflow is located at .github/workflows/docker-build.yml
 3. Execute the work flow
 
