@@ -100,6 +100,36 @@ Push a commit to the branch configured in the workflow (e.g., main) or trigger i
 
 ---
 
+### 3️⃣ Deploy Flask App to Azure App Service
+
+1. Navigate to the Terraform folder for App deployment
+```bash
+cd infra/terraform/app-deployment
+```
+
+3. Create terraform.tfvars and fill the details
+
+```hcl
+subscription_id = "XXXX"
+client_id       = "XXXX"
+client_secret   = "XXXX"
+tenant_id       = "XXXX"
+acr_admin_username = "XXX"
+acr_admin_password = "XXX"
+```
+
+4. Execute the following commands to create Docker registry
+```bash
+terraform init
+terraform plan -out my.plan
+terraform apply "my.plan"
+```
+5. Verify that the app service is running in azure portal
+6. 
+
+
+
+
 
 - name: Azure Login
         uses: azure/login@v2
