@@ -75,12 +75,15 @@ terraform output acr_admin_password
 
 1. Set Secret values for GitHub Actions:
 - AZURE_CREDENTIALS
+
+```hcl
 {
   "clientId": "<YOUR-SERVICE-PRINCIPAL-CLIENT-ID>",
   "clientSecret": "<YOUR-SERVICE-PRINCIPAL-CLIENT-SECRET>",
   "subscriptionId": "<YOUR-AZURE-SUBSCRIPTION-ID>",
   "tenantId": "<YOUR-AZURE-TENANT-ID>"
 }
+```
 
 - ACR_LOGIN_SERVER
   "<your-acr-name>.azurecr.io"
@@ -91,8 +94,14 @@ terraform output acr_admin_password
 - ACR_ADMIN_PASSWORD
   "<your-acr-admin-password>"
 
-2. GitHub Actions workflow is located at .github/workflows/docker-build.yml
+2. GitHub Actions workflow location:
+```bash
+.github/workflows/docker-build.yml
+```
 3. Execute the work flow
+Push a commit to the branch configured in the workflow (e.g., main) or trigger it manually from the GitHub Actions tab.
+
+
 
 - name: Azure Login
         uses: azure/login@v2
