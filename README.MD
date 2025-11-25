@@ -32,8 +32,42 @@ Required **GitHub Secrets**:
 
 ---
 
+## Steps to Run
 
+### 1️⃣ Create Docker Registry (ACR)
 
+1. Clone the repository
+```bash
+git clone <repository-url>
+cd <repository-folder>
+```bash
+
+2. Navigate to the Terraform folder for Docker registry
+```bash
+cd infra/terraform/docker-registry
+```bash
+
+3. Create terraform.tfvars and fill the details
+
+subscription_id = "XXXX"
+client_id       = "XXXX"
+client_secret   = "XXXX"
+tenant_id       = "XXXX"
+
+4. Execute the following commands to create Docker registry
+```bash
+terraform init
+terraform plan -out my.plan
+terraform apply "my.plan"
+```
+5. Get ACR admin user name and store
+```bash
+terraform output acr_admin_username
+```
+6. Get ACR admin password and store
+```bash
+terraform output acr_admin_password
+```
 
 - name: Azure Login
         uses: azure/login@v2
