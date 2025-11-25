@@ -1,4 +1,15 @@
-      - name: Azure Login
+# Flask API Docker Deployment with Terraform and GitHub Actions
+
+This project demonstrates a complete workflow to build, containerize, and deploy a Flask API using **Docker**, **Azure Container Registry (ACR)**, and **Azure App Service**. The infrastructure is managed using **Terraform**, and the Docker image build and push process is automated using **GitHub Actions**.
+
+---
+
+## Project Structure
+
+
+
+
+- name: Azure Login
         uses: azure/login@v2
         with:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
