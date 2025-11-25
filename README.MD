@@ -4,7 +4,15 @@ This project demonstrates a complete workflow to build, containerize, and deploy
 
 ---
 
-## Project Structure
+## Project Overview
+
+This project covers:
+
+1. **Docker Registry Creation**: Using Terraform to provision an Azure Container Registry (ACR).  
+2. **CI/CD with GitHub Actions**: Automatically build, test, and push Docker images to ACR on every push to the `main` branch.  
+3. **Application Deployment**: Deploy the Flask API container to Azure App Service using Terraform.
+
+---
 
 
 
