@@ -14,6 +14,24 @@ This project covers:
 
 ---
 
+## Prerequisites
+
+- Azure Subscription  
+- GitHub repository  
+- Terraform installed locally
+- GitHub Secrets configured for ACR and Azure authentication  
+
+Required **GitHub Secrets**:
+
+| Secret Name | Purpose |
+|------------|---------|
+| `AZURE_CREDENTIALS` | JSON credentials for Azure login using `azure/login@v2` |
+| `ACR_LOGIN_SERVER` | ACR login server (e.g., `flaskapiregistry2025.azurecr.io`) |
+| `ACR_ADMIN_USERNAME` | Admin username for ACR |
+| `ACR_ADMIN_PASSWORD` | Admin password for ACR |
+
+---
+
 
 
 
