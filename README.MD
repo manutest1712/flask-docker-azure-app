@@ -49,10 +49,12 @@ cd infra/terraform/docker-registry
 
 3. Create terraform.tfvars and fill the details
 
+```hcl
 subscription_id = "XXXX"
 client_id       = "XXXX"
 client_secret   = "XXXX"
 tenant_id       = "XXXX"
+```
 
 4. Execute the following commands to create Docker registry
 ```bash
