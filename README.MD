@@ -73,8 +73,7 @@ terraform output acr_admin_password
 
 ### 2️⃣ Build and Publish Docker Image using GitHub Actions
 
-1. Set Secret values for
-```hcl
+1. Set Secret values for GitHub Actions:
 - AZURE_CREDENTIALS
 {
   "clientId": "<YOUR-SERVICE-PRINCIPAL-CLIENT-ID>",
@@ -82,10 +81,16 @@ terraform output acr_admin_password
   "subscriptionId": "<YOUR-AZURE-SUBSCRIPTION-ID>",
   "tenantId": "<YOUR-AZURE-TENANT-ID>"
 }
-```
+
 - ACR_LOGIN_SERVER
+  "<your-acr-name>.azurecr.io"
+
 - ACR_ADMIN_USERNAME
+  "<your-acr-admin-username>"
+
 - ACR_ADMIN_PASSWORD
+  "<your-acr-admin-password>"
+
 2. GitHub Actions workflow is located at .github/workflows/docker-build.yml
 3. Execute the work flow
 
