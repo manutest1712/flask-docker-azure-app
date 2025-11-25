@@ -45,7 +45,7 @@ cd <repository-folder>
 2. Navigate to the Terraform folder for Docker registry
 ```bash
 cd infra/terraform/docker-registry
-```bash
+```
 
 3. Create terraform.tfvars and fill the details
 
